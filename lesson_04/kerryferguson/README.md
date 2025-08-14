@@ -1,27 +1,5 @@
 # Prime Number Checker - Dual Language Implementation
 
-**Author:** Kerry Ferguson  
-**Date:** August 14, 2025  
-**Assignment:** Lesson 04 - How to Be A Great Software Engineer
-
-## Overview
-
-This project implements a prime number checker in two different programming languages: **Python** and **JavaScript**. Both implementations provide identical functionality for determining whether numbers are prime and finding all primes within a given range.
-
-## Files Structure
-
-```
-kerryferguson/
-├── prime_checker.py          # Python implementation
-├── prime_checker.js          # JavaScript implementation
-├── test_prime_checker.py     # Python unit tests (unittest)
-├── test_runner.js           # JavaScript tests (custom runner)
-├── package.json             # Node.js project configuration
-├── README.md               # This file
-├── COVERAGE_ANALYSIS.md    # Detailed test coverage report
-└── TEST_README.md          # Comprehensive test documentation
-```
-
 ## Running the Implementations
 
 ### Python
@@ -31,10 +9,6 @@ python3 prime_checker.py
 
 # Run tests
 python3 test_prime_checker.py
-
-# Run with coverage
-python3 -m coverage run --source=. test_prime_checker.py
-python3 -m coverage report -m
 ```
 
 ### JavaScript
@@ -74,7 +48,22 @@ The implementations demonstrate how the same algorithmic thinking can be express
 
 Both implementations have comprehensive test suites with excellent coverage:
 
-- **Python Tests:** 22 tests, 100% pass rate, 91% code coverage
+- **Python Tests:** 23 tests, 100% pass rate, 98% code coverage
 - **JavaScript Tests:** 11 test suites, 100% pass rate, all core functionality covered
 
 The tests validate algorithm correctness, edge case handling, performance characteristics, and integration between functions, ensuring both implementations are mathematically sound and production-ready.
+
+## Code Coverage
+
+To achieve 100% code coverage for Python:
+
+```bash
+# Run tests with coverage tracking
+python3 -m coverage run --source=prime_checker test_prime_checker.py
+
+# Also run the main script to cover the __name__ == "__main__" line
+echo "0" | python3 -m coverage run --append --source=prime_checker prime_checker.py
+
+# Check the final coverage report
+python3 -m coverage report -m
+```

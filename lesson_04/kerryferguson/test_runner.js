@@ -4,11 +4,8 @@
  * Tests the JavaScript implementation without external dependencies
  */
 
-const fs = require('fs');
-
-// Load the prime checker module
-const code = fs.readFileSync('./prime_checker.js', 'utf8');
-eval(code);
+// Import the functions directly from the module
+const { isPrime, findPrimesInRange } = require('./prime_checker.js');
 
 // Simple test assertion function
 function assert(condition, message) {
@@ -46,7 +43,7 @@ function test(description, testFn) {
 
 // Run tests
 console.log("🧪 Running JavaScript Prime Checker Tests");
-console.log("=" * 45);
+console.log("=".repeat(45));
 
 test("Numbers less than 2 should not be prime", () => {
     return assert(isPrime(-5) === false, "-5 should not be prime") &&
@@ -130,7 +127,7 @@ test("Performance test with larger numbers", () => {
 });
 
 // Print summary
-console.log("\n" + "=" * 45);
+console.log("\n" + "=".repeat(45));
 console.log(`📊 Test Results: ${passed}/${total} tests passed`);
 console.log(`Success rate: ${((passed/total) * 100).toFixed(1)}%`);
 

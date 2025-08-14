@@ -200,12 +200,9 @@ class TestMainFunction(unittest.TestCase):
     def test_main_keyboard_interrupt_handling(self):
         """Test handling of keyboard interrupt."""
         with redirect_stdout(io.StringIO()) as captured_output:
-            # Mock input: KeyboardInterrupt
+            # Mock input: KeyboardInterrupt should trigger the except block
             with patch('builtins.input', side_effect=KeyboardInterrupt()):
-                try:
-                    main()
-                except (SystemExit, EOFError, KeyboardInterrupt):
-                    pass
+                main()  # Let the function handle the KeyboardInterrupt internally
 
         output = captured_output.getvalue()
         self.assertIn("Goodbye", output)
