@@ -1,0 +1,17 @@
+{
+  "name": "prime-checker-js",
+  "version": "1.0.0",
+  "description": "Prime number checker implementation in JavaScript",
+  "main": "prime_checker.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node prime_checker.js",
+    "coverage": "jest --coverage"
+  },
+  "keywords": ["prime", "mathematics", "algorithm"],
+  "author": "Kerry Ferguson",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
