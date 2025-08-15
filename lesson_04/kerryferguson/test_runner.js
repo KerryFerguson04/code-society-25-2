@@ -5,7 +5,7 @@
  */
 
 // Import the functions directly from the module
-const { isPrime, findPrimesInRange } = require('./prime_checker.js');
+const { isPrime } = require('./prime_checker.js');
 
 // Simple test assertion function
 function assert(condition, message) {
@@ -83,27 +83,6 @@ test("Small known composites should be identified correctly", () => {
     });
 });
 
-test("Range 1-10 should find correct primes", () => {
-    const expected = [2, 3, 5, 7];
-    const actual = findPrimesInRange(1, 10);
-    return assert(arrayEquals(actual, expected), `Should find [${expected}], got [${actual}]`);
-});
-
-test("Range 10-30 should find correct primes", () => {
-    const expected = [11, 13, 17, 19, 23, 29];
-    const actual = findPrimesInRange(10, 30);
-    return assert(arrayEquals(actual, expected), `Should find [${expected}], got [${actual}]`);
-});
-
-test("Invalid range (start > end) should return empty array", () => {
-    const result = findPrimesInRange(10, 5);
-    return assert(arrayEquals(result, []), "Should return empty array for invalid range");
-});
-
-test("Range with no primes should return empty array", () => {
-    const result = findPrimesInRange(24, 28);
-    return assert(arrayEquals(result, []), "Should return empty array for range 24-28");
-});
 
 test("Larger primes should be handled correctly", () => {
     const largerPrimes = [97, 101, 103, 107, 109];

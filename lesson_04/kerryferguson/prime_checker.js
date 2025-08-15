@@ -38,21 +38,6 @@ function isPrime(n) {
     return true;
 }
 
-/**
- * Finds all prime numbers within a given range.
- * @param {number} start - The starting number (inclusive)
- * @param {number} end - The ending number (inclusive)
- * @returns {number[]} An array of all prime numbers in the range
- */
-function findPrimesInRange(start, end) {
-    const primes = [];
-    for (let num = start; num <= end; num++) {
-        if (isPrime(num)) {
-            primes.push(num);
-        }
-    }
-    return primes;
-}
 
 /**
  * Main function to demonstrate prime number checking functionality.
@@ -70,10 +55,7 @@ function main() {
         console.log(`${num.toString().padStart(3)} -> ${result ? 'Prime' : 'Not Prime'}`);
     });
 
-    // Find primes in a range
-    console.log("\nPrime numbers between 1 and 50:");
-    const primes = findPrimesInRange(1, 50);
-    console.log(primes);
+ 
 
     // Interactive mode
     console.log("\nInteractive mode (press Ctrl+C to exit):");
@@ -125,7 +107,6 @@ function main() {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         isPrime,
-        findPrimesInRange,
         main
     };
 }

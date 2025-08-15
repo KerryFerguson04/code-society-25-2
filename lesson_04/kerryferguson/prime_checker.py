@@ -39,24 +39,6 @@ def is_prime(n):
     return True
 
 
-def find_primes_in_range(start, end):
-    """
-    Finds all prime numbers within a given range.
-
-    Args:
-        start (int): The starting number (inclusive)
-        end (int): The ending number (inclusive)
-
-    Returns:
-        list: A list of all prime numbers in the range
-    """
-    primes = []
-    for num in range(start, end + 1):
-        if is_prime(num):
-            primes.append(num)
-    return primes
-
-
 def main():
     """
     Main function to demonstrate prime number checking functionality.
@@ -71,11 +53,6 @@ def main():
     for num in test_numbers:
         result = is_prime(num)
         print(f"{num:3d} -> {'Prime' if result else 'Not Prime'}")
-
-    # Find primes in a range
-    print(f"\nPrime numbers between 1 and 50:")
-    primes = find_primes_in_range(1, 50)
-    print(primes)
 
     # Interactive mode
     print("\nInteractive mode (enter 0 to exit):")

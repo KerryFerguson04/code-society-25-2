@@ -11,7 +11,7 @@ import sys
 import io
 from contextlib import redirect_stdout
 from unittest.mock import patch
-from prime_checker import is_prime, find_primes_in_range, main
+from prime_checker import is_prime, main
 
 
 class TestIsPrime(unittest.TestCase):
@@ -79,65 +79,6 @@ class TestIsPrime(unittest.TestCase):
         for prime in larger_primes:
             with self.subTest(prime=prime):
                 self.assertTrue(is_prime(prime))
-
-
-class TestFindPrimesInRange(unittest.TestCase):
-    """Test cases for the find_primes_in_range function."""
-
-    def test_invalid_ranges(self):
-        """Test behavior with invalid ranges."""
-        # Start greater than end
-        result = find_primes_in_range(10, 5)
-        self.assertEqual(result, [])
-
-        # Range with no valid numbers
-        result = find_primes_in_range(-5, 1)
-        self.assertEqual(result, [])
-
-    def test_range_1_to_10(self):
-        """Test finding primes in range 1-10."""
-        expected = [2, 3, 5, 7]
-        actual = find_primes_in_range(1, 10)
-        self.assertEqual(actual, expected)
-
-    def test_range_10_to_30(self):
-        """Test finding primes in range 10-30."""
-        expected = [11, 13, 17, 19, 23, 29]
-        actual = find_primes_in_range(10, 30)
-        self.assertEqual(actual, expected)
-
-    def test_single_number_range(self):
-        """Test range containing only one number."""
-        # Single prime
-        result = find_primes_in_range(7, 7)
-        self.assertEqual(result, [7])
-
-        # Single composite
-        result = find_primes_in_range(8, 8)
-        self.assertEqual(result, [])
-
-    def test_range_with_no_primes(self):
-        """Test range containing no prime numbers."""
-        result = find_primes_in_range(24, 28)
-        self.assertEqual(result, [])
-
-    def test_primes_up_to_50(self):
-        """Test finding all primes up to 50."""
-        expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-        actual = find_primes_in_range(1, 50)
-        self.assertEqual(actual, expected)
-        self.assertEqual(len(actual), 15)
-
-    def test_primes_up_to_100(self):
-        """Test finding primes up to 100."""
-        result = find_primes_in_range(1, 100)
-        self.assertEqual(len(result), 25)
-
-        # Check some specific primes and composites
-        self.assertIn(89, result)
-        self.assertIn(97, result)
-        self.assertNotIn(91, result)
-        self.assertNotIn(93, result)
 
 
 class TestMainFunction(unittest.TestCase):
@@ -225,21 +166,13 @@ class TestPerformance(unittest.TestCase):
             with self.subTest(composite=composite):
                 self.assertFalse(is_prime(composite))
 
-    def test_prime_counting(self):
-        """Test that we can efficiently count primes in ranges."""
-        primes_to_100 = find_primes_in_range(1, 100)
-        self.assertEqual(len(primes_to_100), 25)
-
-        primes_to_200 = find_primes_in_range(1, 200)
-        self.assertEqual(len(primes_to_200), 46)
-
 
 if __name__ == "__main__":
     # Create a test suite
     test_suite = unittest.TestSuite()
 
     # Add all test classes
-    test_classes = [TestIsPrime, TestFindPrimesInRange,
+    test_classes = [TestIsPrime,
                     TestMainFunction, TestPerformance]
 
     for test_class in test_classes:
